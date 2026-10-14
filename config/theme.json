@@ -1,0 +1,31 @@
+{
+  "_comentario": "Edita este archivo para cambiar el aspecto del portal. Los colores Color1/2/3 de la BD sobreescriben color_primario/secundario/acento si están definidos.",
+
+  "nombre_producto": "Huella",
+  "base_url":        "/huella/",
+  "logo_path": "assets/img/logo.jpg",
+  "logo_alt": "Huella - Portal de condolencias",
+
+  "colores": {
+    "color_primario":   "#3d2b1f",
+    "color_secundario": "#7a5c4e",
+    "color_acento":     "#c4a882",
+    "color_fondo":      "#f7f4f1",
+    "color_fondo_card": "#ffffff",
+    "color_texto":      "#2c2c2c",
+    "color_texto_suave":"#6b6b6b",
+    "color_borde":      "#e0d8d0"
+  },
+
+  "tipografia": {
+    "fuente_titulo":    "'Georgia', 'Times New Roman', serif",
+    "fuente_cuerpo":    "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+    "tamanio_base":     "16px"
+  },
+
+  "layout": {
+    "max_ancho_contenido": "480px",
+    "radio_tarjeta":       "16px",
+    "sombra_tarjeta":      "0 2px 12px rgba(0,0,0,0.08)"
+  }
+}

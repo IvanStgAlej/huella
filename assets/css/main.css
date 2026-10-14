@@ -1,0 +1,678 @@
+/* ================================================
+   HUELLA — Hoja de estilos principal
+   Los colores y tipografías se inyectan como
+   variables CSS desde theme.json (via PHP)
+   ================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: var(--tamanio-base); }
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+}
+
+/* ---- CABECERA ---- */
+.header {
+    background: var(--color-fondo-card);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.header__logo img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header__nombre {
+    font-family: var(--fuente-titulo);
+    font-size: 1.2rem;
+    color: var(--color-primario);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.header__acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-header {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.38rem 0.85rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--color-texto-suave);
+    font-size: 0.82rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-header:hover {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.btn-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--color-borde);
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--color-texto-suave);
+    transition: background 0.2s, color 0.2s;
+}
+.btn-icon:hover {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.btn-icon--usuario {
+    background: var(--color-primario);
+    color: #fff;
+    font-family: var(--fuente-titulo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-color: var(--color-primario);
+}
+.btn-icon--usuario:hover {
+    background: var(--color-secundario);
+    color: #fff;
+    border-color: var(--color-secundario);
+}
+
+.user-menu { position: relative; }
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+    min-width: 180px;
+    overflow: hidden;
+    z-index: 200;
+}
+.user-dropdown.open { display: block; }
+
+.user-dropdown__nombre {
+    display: block;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    border-bottom: 1px solid var(--color-borde);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-dropdown__sep {
+    height: 1px;
+    background: var(--color-borde);
+    margin: 0;
+}
+
+.user-dropdown__idioma-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+}
+.user-dropdown__idioma-btn:hover { background: var(--color-fondo); }
+.user-dropdown__idioma-btn span  { flex: 1; }
+
+.user-dropdown__chevron {
+    transition: transform 0.2s;
+    color: var(--color-texto-suave);
+}
+.user-dropdown__chevron.abierto { transform: rotate(180deg); }
+
+.user-dropdown__idioma-lista {
+    display: none;
+    background: var(--color-fondo);
+}
+.user-dropdown__idioma-lista.open { display: block; }
+
+.user-dropdown__idioma-op {
+    display: block;
+    width: 100%;
+    padding: 0.55rem 1rem 0.55rem 2.25rem;
+    font-size: 0.83rem;
+    color: var(--color-texto);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+}
+.user-dropdown__idioma-op:hover            { background: var(--color-borde); }
+.user-dropdown__idioma-op--activo          { font-weight: 600; color: var(--color-primario); }
+
+.user-dropdown__admin {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.user-dropdown__admin:hover { background: var(--color-fondo); }
+
+.user-dropdown__cerrar {
+    display: block;
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #dc2626;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.user-dropdown__cerrar:hover { background: #fff5f5; }
+
+/* ---- CONTENIDO PRINCIPAL ---- */
+.main {
+    max-width: var(--max-ancho);
+    margin: 0 auto;
+    padding: 0 0 5.5rem;
+}
+
+@media (min-width: 768px) {
+    .main { padding-bottom: 2rem; }
+}
+
+/* ---- HERO DEL FALLECIDO ---- */
+.hero-fallecido {
+    background: var(--color-fondo-card);
+    border-bottom: 1px solid var(--color-borde);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.75rem 1.25rem 1.75rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.hero-fallecido__foto-wrap {
+    position: relative;
+    margin-bottom: 1.1rem;
+}
+
+.hero-fallecido__foto {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--color-acento);
+    background: var(--color-fondo);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.hero-fallecido__foto img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.hero-fallecido__foto svg {
+    color: var(--color-borde);
+    width: 44px; height: 44px;
+}
+
+.hero-fallecido__in-memoriam {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-acento);
+    margin-bottom: 0.5rem;
+    font-family: var(--fuente-cuerpo);
+}
+
+.hero-fallecido__nombre {
+    font-family: var(--fuente-titulo);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.hero-fallecido__anios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0.6rem;
+}
+
+.hero-fallecido__anios-sep {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--color-acento);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.hero-fallecido__titulo {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    line-height: 1.5;
+    max-width: 280px;
+}
+
+/* ---- ENLACE AL MURO ---- */
+.ir-mensajes {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0 0.9rem 0.75rem;
+    padding: 1rem 1.1rem;
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-card);
+    box-shadow: var(--sombra-card);
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ir-mensajes:hover {
+    border-color: var(--color-primario);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-primario) 12%, transparent);
+}
+.ir-mensajes__icono {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.ir-mensajes__icono svg { width: 22px; height: 22px; }
+.ir-mensajes__texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+.ir-mensajes__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+.ir-mensajes__sub {
+    font-size: 0.75rem;
+    color: var(--color-texto-suave);
+}
+.ir-mensajes__flecha {
+    width: 18px; height: 18px;
+    color: var(--color-texto-suave);
+    flex-shrink: 0;
+}
+
+/* ---- AVISO DESTACADO (index) ---- */
+.aviso-destacado {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0.9rem 0.75rem;
+    padding: 1rem 1.1rem;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-left: 4px solid #d97706;
+    border-radius: 12px;
+}
+.aviso-destacado__icono {
+    flex-shrink: 0;
+    color: #d97706;
+    margin-top: 0.1rem;
+}
+.aviso-destacado__icono svg { width: 20px; height: 20px; }
+.aviso-destacado__texto {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #78350f;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ---- BLOQUE DE FECHAS (dentro del hero) ---- */
+.fechas-bloque {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.fechas-bloque__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+}
+
+.fechas-bloque__label {
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-texto-suave);
+}
+
+.fechas-bloque__fecha {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.fechas-bloque__sep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 0 1rem;
+    color: var(--color-acento);
+    font-size: 1.1rem;
+}
+
+.fechas-bloque__edad {
+    font-size: 0.68rem;
+    color: var(--color-texto-suave);
+    letter-spacing: 0.04em;
+    margin-top: 0.1rem;
+}
+
+/* ---- TARJETAS GENÉRICAS ---- */
+.card {
+    background: var(--color-fondo-card);
+    border-radius: var(--radio-card);
+    box-shadow: var(--sombra-card);
+    margin: 0 0.9rem 0.75rem;
+    overflow: hidden;
+}
+
+/* ---- TARJETA FALLECIDO (legacy — se mantiene para páginas secundarias) ---- */
+.card-fallecido {
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-fallecido__foto {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--color-fondo);
+    border: 2px solid var(--color-borde);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.card-fallecido__foto img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.card-fallecido__foto svg {
+    color: var(--color-texto-suave);
+}
+
+.card-fallecido__info { flex: 1; }
+
+.card-fallecido__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+    margin-bottom: 0.15rem;
+}
+
+.card-fallecido__nombre {
+    font-family: var(--fuente-titulo);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 0.1rem;
+    line-height: 1.3;
+}
+
+.card-fallecido__titulo {
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--color-texto-suave);
+    margin-top: 0.2rem;
+}
+
+/* ---- TABLÓN DE MENSAJES (index) ---- */
+.tablon-index-card {
+    padding: 1rem 1.25rem 1.1rem;
+    border-left: 3px solid var(--color-primario);
+}
+.tablon-index-card__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 0.4rem;
+}
+.tablon-index-card__texto {
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    line-height: 1.6;
+}
+
+/* ---- TARJETA BIOGRAFÍA ---- */
+.card-bio { padding: 1.25rem; }
+
+.card-bio__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-bio__titulo::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-borde);
+}
+
+.card-bio__texto {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--color-texto);
+}
+
+/* ---- NAVEGACIÓN INFERIOR STICKY ---- */
+.nav-bottom {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--color-fondo-card);
+    border-top: 1px solid var(--color-borde);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.35rem 0 calc(0.35rem + env(safe-area-inset-bottom));
+    z-index: 100;
+}
+
+.nav-bottom__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.18rem;
+    color: var(--color-texto-suave);
+    font-size: 0.62rem;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 10px;
+    transition: color 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--fuente-cuerpo);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+}
+
+.nav-bottom__item svg {
+    width: 21px; height: 21px;
+    stroke-width: 1.75;
+    transition: transform 0.2s;
+}
+
+.nav-bottom__item .nav-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: white;
+    color: var(--color-texto-suave);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-bottom__item--mensajes .nav-icon {
+    background: var(--color-acento);
+    color: var(--color-primario);
+}
+
+.nav-bottom__item.active .nav-icon {
+    background: var(--color-primario);
+    color: white;
+}
+
+.nav-bottom__item.active .nav-icon svg {
+    stroke-width: 2.25;
+}
+
+.nav-bottom__item:hover .nav-icon {
+    background: var(--color-primario);
+    color: white;
+}
+
+.nav-bottom__item.active { color: var(--color-primario); }
+.nav-bottom__item:hover  { color: var(--color-primario); }
+
+.nav-bottom__item.active::after {
+    content: '';
+    display: block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--color-primario);
+    margin: -0.1rem auto 0;
+}
+
+@media (min-width: 768px) {
+    .nav-bottom {
+        max-width: 560px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        border-radius: 20px 20px 0 0;
+        border-left: 1px solid var(--color-borde);
+        border-right: 1px solid var(--color-borde);
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-bottom__item {
+        font-size: 0.72rem;
+        padding: 0.4rem 1.5rem;
+    }
+
+    .nav-bottom__item svg { width: 19px; height: 19px; }
+
+    .main { max-width: 560px; }
+
+    .hero-fallecido,
+    .card {
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-fallecido { border-radius: 0 0 var(--radio-card) var(--radio-card); }
+}
+
+/* ---- SELECTOR DE PRUEBA ---- */
+.selector-prueba {
+    background: #fffbea;
+    border: 1px dashed #d4a015;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    margin: 0.75rem 0.9rem 0.75rem;
+    font-size: 0.82rem;
+}
+.selector-prueba strong { color: #8a6000; }
+.selector-prueba select {
+    margin-top: 0.4rem;
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid #d4a015;
+    font-size: 0.85rem;
+    background: white;
+}
+
+/* ---- UTILIDADES ---- */
+.separador {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-texto-suave);
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
+}
+.separador::before, .separador::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-borde);
+}

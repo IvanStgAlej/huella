@@ -1,0 +1,5 @@
+# Bloquea el acceso web directo a los archivos de configuración.
+# Estos archivos contienen credenciales (API keys, contraseñas de BD)
+# y solo deben ser leídos por PHP desde el servidor.
+Order deny,allow
+Deny from all

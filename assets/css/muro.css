@@ -1,0 +1,701 @@
+/* ================================================
+   MURO — estilos de la página del muro de condolencias
+   ================================================ */
+
+.main { padding-bottom: 5.5rem; }
+@media (min-width: 768px) { .main { padding-bottom: 2rem; } }
+
+.muro-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.9rem 0.9rem 0.75rem;
+    padding: 0;
+}
+.muro-header__icono {
+    width: 44px; height: 44px;
+    background: var(--color-fondo-card);
+    border-radius: 12px;
+    border: 1px solid var(--color-borde);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primario);
+}
+.muro-header__icono svg { width: 22px; height: 22px; }
+.muro-header__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin: 0;
+}
+.muro-header__subtitulo {
+    font-size: 0.72rem;
+    color: var(--color-texto-suave);
+    letter-spacing: 0.05em;
+    margin: 0.1rem 0 0;
+}
+
+/* ── COMPOSITOR ── */
+.compositor {
+    padding: 0.85rem 1rem 0.75rem;
+}
+.compositor--reply {
+    border-top: 1px solid var(--color-borde);
+    background: var(--color-fondo);
+    border-radius: 0 0 var(--radio-card) var(--radio-card);
+    margin: 0;
+    padding: 0.75rem 0.9rem;
+}
+
+.compositor__top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.compositor__avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--fuente-titulo);
+}
+
+.compositor__nombre {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid var(--color-borde);
+    background: transparent;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    padding: 0.2rem 0;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.compositor__nombre:focus { border-color: var(--color-primario); }
+.compositor__nombre::placeholder { font-weight: 400; color: var(--color-texto-suave); }
+
+.compositor__texto {
+    width: 100%;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    background: var(--color-fondo-card);
+    resize: none;
+    outline: none;
+    min-height: 70px;
+    line-height: 1.5;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+.compositor--reply .compositor__texto {
+    min-height: 52px;
+    font-size: 0.87rem;
+    background: var(--color-fondo-card);
+}
+.compositor__texto:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primario) 12%, transparent);
+}
+
+.compositor__previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.4rem 0 0;
+}
+.compositor__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 20px;
+    padding: 0.25rem 0.5rem 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-texto-suave);
+}
+.compositor__chip button {
+    background: none; border: none; cursor: pointer;
+    color: var(--color-texto-suave);
+    font-size: 1rem; line-height: 1;
+    padding: 0 0.1rem;
+    opacity: 0.7;
+}
+.compositor__chip button:hover { opacity: 1; }
+
+.compositor__barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    gap: 0.5rem;
+}
+
+.compositor__media-btns {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.compositor__btn-media {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde);
+    background: transparent;
+    color: var(--color-texto-suave);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.compositor__btn-media:hover {
+    color: var(--color-primario);
+    border-color: var(--color-primario);
+    background: color-mix(in srgb, var(--color-primario) 6%, transparent);
+}
+.compositor__btn-media svg { width: 16px; height: 16px; }
+.compositor__btn-media--active {
+    color: var(--color-primario);
+    border-color: var(--color-primario);
+    background: color-mix(in srgb, var(--color-primario) 10%, transparent);
+}
+
+/* ── Panel de enlace en compositor ── */
+.compositor__link-panel { display: none; }
+
+.compositor__enviar {
+    padding: 0.5rem 1.1rem;
+    border-radius: 20px;
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--fuente-cuerpo);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+.compositor__enviar:hover { opacity: 0.88; transform: translateY(-1px); }
+.compositor__enviar:disabled { opacity: 0.5; cursor: default; transform: none; }
+.compositor__enviar--sm {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+}
+
+/* ── POST CARD (Instagram / libro de firmas) ── */
+.post-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Media encima del texto, dentro del body */
+.post-card__media {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.65rem;
+}
+
+/* ── Cuadrícula de imágenes ── */
+.post-card__imagenes {
+    display: grid;
+    gap: 2px;
+    width: 100%;
+}
+.post-card__imagenes--1 { grid-template-columns: 1fr; }
+.post-card__imagenes--2 { grid-template-columns: 1fr 1fr; }
+.post-card__imagenes--3 { grid-template-columns: 1fr 1fr; }
+.post-card__imagenes--3 .post-img:first-child { grid-column: 1 / -1; }
+.post-card__imagenes--4 { grid-template-columns: 1fr 1fr; }
+
+.post-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background: var(--color-fondo);
+    cursor: pointer;
+}
+.post-card__imagenes--1 .post-img { aspect-ratio: 16/9; }
+
+/* ── Vídeo ── */
+.post-video {
+    width: 100%;
+    max-height: 320px;
+    display: block;
+    background: #000;
+}
+
+/* ── Audio ── */
+.post-audio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    background: var(--color-fondo);
+    border-bottom: 1px solid var(--color-borde);
+}
+.post-audio-item svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    color: var(--color-primario);
+}
+.post-audio-item audio {
+    flex: 1;
+    height: 32px;
+}
+
+/* ── Link adjunto en post ── */
+.post-link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    margin-top: 0.35rem;
+    background: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--color-primario);
+    font-size: 0.84rem;
+    font-weight: 500;
+    overflow: hidden;
+    transition: background 0.15s;
+}
+.post-link-card:hover {
+    background: color-mix(in srgb, var(--color-primario) 6%, var(--color-fondo));
+}
+.post-link-card__favicon {
+    width: 18px; height: 18px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+.post-link-card__url {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Cuerpo del post ── */
+.post-card__body {
+    padding: 0.75rem 1rem 0.85rem;
+}
+
+/* Cabecera: solo botón borrar alineado a la derecha */
+.post-card__header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.25rem;
+}
+
+/* ── Botón de like (corazón) ── */
+.btn-like {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem 0.1rem;
+    line-height: 1;
+    transition: transform 0.15s;
+}
+.btn-like svg {
+    width: 20px; height: 20px;
+    fill: none;
+    stroke: var(--color-texto-suave);
+    stroke-width: 1.5;
+    transition: fill 0.2s, stroke 0.2s, transform 0.15s;
+}
+.btn-like:active svg { transform: scale(0.88); }
+.btn-like.liked svg {
+    fill: #e11d48;
+    stroke: #e11d48;
+    animation: heartPop 0.3s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes heartPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.35); }
+    70%  { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* ── Botón de editar ── */
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--color-texto-suave);
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+.btn-edit svg { width: 15px; height: 15px; }
+.btn-edit:hover { background: color-mix(in srgb, var(--color-primario) 10%, transparent); color: var(--color-primario); }
+
+/* ── Botón guardar (modo edición) ── */
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #16a34a;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+.btn-save svg { width: 15px; height: 15px; }
+.btn-save:hover { background: #f0fdf4; }
+
+.btn-cancel-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--color-texto-suave);
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+.btn-cancel-edit svg { width: 15px; height: 15px; }
+.btn-cancel-edit:hover { background: #fdf2f2; color: #b91c1c; }
+
+/* ── Textarea de edición inline ── */
+.post-edit__textarea {
+    width: 100%;
+    border: 1px solid var(--color-primario);
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    font-family: var(--fuente-cuerpo);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-texto);
+    background: var(--color-fondo-card);
+    resize: none;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primario) 12%, transparent);
+    box-sizing: border-box;
+    margin-bottom: 0.55rem;
+}
+
+/* ── Botón de borrar ── */
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--color-texto-suave);
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+.btn-delete svg { width: 16px; height: 16px; }
+.btn-delete:hover,
+.btn-delete:active { background: #fdf2f2; color: #b91c1c; }
+
+/* Variantes pequeñas para replies */
+.btn-like--sm svg { width: 16px; height: 16px; stroke-width: 1.5; }
+.btn-like--sm { padding: 0.2rem 0.1rem; }
+.btn-delete--sm { width: 26px; height: 26px; }
+.btn-delete--sm svg { width: 14px; height: 14px; }
+
+/* Contador inline en reply-like */
+.reply-like__count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #e11d48;
+    line-height: 1;
+}
+
+
+/* ── Texto del post (protagonista) ── */
+.post-card__texto {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-texto);
+    margin: 0 0 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ── Corazón como sangría + texto ── */
+.post-card__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin-bottom: 0.55rem;
+}
+.post-card__content .btn-like {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* ── Fila autor + responder (misma altura) ── */
+.post-card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: calc(20px + 0.2rem + 0.55rem); /* svg + padding botón + gap */
+}
+.post-card__autor {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin: 0;
+}
+
+/* ── Contador de likes dentro del botón ── */
+.post-like-count {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--color-texto-suave);
+    margin-left: 0.3rem;
+    line-height: 1;
+}
+
+/* ── Enlace "Responder / Ver N respuestas" ── */
+.post-card__reply-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-texto-suave);
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.post-card__reply-link:hover { color: var(--color-primario); }
+
+/* ── ZONA DE RESPUESTAS ── */
+.post-replies {
+    border-top: 1px solid var(--color-borde);
+    background: var(--color-fondo);
+    border-radius: 0 0 var(--radio-card) var(--radio-card);
+    display: none;
+}
+.post-replies--open {
+    display: block;
+}
+
+.post-replies__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.75rem 0.9rem 0.5rem 1.3rem;
+    border-left: 3px solid var(--color-acento);
+    margin: 0 0.75rem 0;
+}
+
+.post-replies__cargando {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--color-texto-suave);
+}
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── REPLY CARD (compacta) ── */
+.reply-card {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+.reply-card:last-child { border-bottom: none; }
+
+.reply-card__media {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+.reply-card__media .post-img { border-radius: 8px; }
+.reply-card__media .post-video {
+    border-radius: 8px;
+    max-height: 200px;
+}
+
+.reply-card__body { }
+
+.reply-card__top {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.25rem;
+}
+
+.reply-card__avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    font-family: var(--fuente-titulo);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.reply-card__meta {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    min-width: 0;
+}
+.reply-card__autor {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.reply-card__fecha {
+    font-size: 0.68rem;
+    color: var(--color-texto-suave);
+    flex-shrink: 0;
+}
+
+.reply-card__texto {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--color-texto);
+    margin: 0 0 0 calc(26px + 0.45rem);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ── MODAL DE CONFIRMACIÓN ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    padding: 1.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.modal-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal {
+    background: var(--color-fondo-card);
+    border-radius: 20px;
+    padding: 2rem 1.5rem 1.5rem;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    transform: scale(0.93) translateY(8px);
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-overlay.visible .modal {
+    transform: scale(1) translateY(0);
+}
+
+.modal__icono {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #fdf2f2;
+    border: 1px solid #f4aaaa;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    color: #b91c1c;
+}
+.modal__icono svg { width: 24px; height: 24px; }
+
+.modal__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 0.35rem;
+}
+
+.modal__desc {
+    font-size: 0.83rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.modal__botones {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.modal__btn {
+    flex: 1;
+    padding: 0.7rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--fuente-cuerpo);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.modal__btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.modal__btn:active { transform: translateY(0); }
+
+.modal__btn--cancelar {
+    background: var(--color-fondo);
+    color: var(--color-texto-suave);
+    border: 1px solid var(--color-borde);
+}
+.modal__btn--confirmar {
+    background: #b91c1c;
+    color: white;
+}
+
+/* ── ESTADO VACÍO / PRIVADO ── */
+.muro-estado {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+}
+.muro-estado svg {
+    width: 44px; height: 44px;
+    margin: 0 auto 0.75rem;
+    display: block;
+    color: var(--color-borde);
+}
+.muro-estado p { max-width: 240px; margin: 0 auto; line-height: 1.5; }

@@ -1,0 +1,295 @@
+/* ================================================
+   ACTOS — estilos específicos de la página de actos
+   ================================================ */
+
+/* Cabecera de sección */
+.actos-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.9rem 0.9rem 0.75rem;
+    padding: 0;
+}
+
+.actos-header__icono {
+    width: 44px; height: 44px;
+    background: var(--color-fondo-card);
+    border-radius: 12px;
+    border: 1px solid var(--color-borde);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primario);
+}
+
+.actos-header__icono svg { width: 22px; height: 22px; }
+
+.actos-header__titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin: 0;
+}
+
+.actos-header__subtitulo {
+    font-size: 0.72rem;
+    color: var(--color-texto-suave);
+    letter-spacing: 0.05em;
+    margin: 0.1rem 0 0;
+}
+
+/* Tarjeta de acto */
+.acto-card { padding: 1rem 1.1rem; }
+
+.acto-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.acto-card__icono {
+    width: 38px; height: 38px;
+    background: var(--color-fondo);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primario);
+}
+
+.acto-card__icono svg { width: 20px; height: 20px; }
+
+.acto-card__tipo-wrap { flex: 1; }
+
+.acto-card__tipo {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+/* Acciones rápidas: teléfono y mapa */
+.acto-card__acciones {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.acto-accion {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--color-borde);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-texto-suave);
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.acto-accion:hover {
+    color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.acto-accion svg { width: 15px; height: 15px; }
+
+/* Lugar */
+.acto-card__lugar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 0.65rem;
+    line-height: 1.4;
+}
+
+.acto-card__lugar svg {
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    color: var(--color-texto-suave);
+}
+
+.acto-card__lugar-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.acto-card__lugar-nombre {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.acto-card__lugar-dir {
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--color-texto-suave);
+}
+
+/* Sala */
+.acto-card__sala {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0.65rem;
+}
+.acto-card__sala svg {
+    width: 13px; height: 13px;
+    flex-shrink: 0;
+    color: var(--color-texto-suave);
+}
+
+/* Fechas */
+.acto-card__fechas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--color-texto-suave);
+}
+
+.acto-card__fecha {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.acto-card__fecha svg {
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.acto-card__fecha-label {
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-right: 0.25rem;
+}
+
+/* Texto adicional */
+.acto-card__texto {
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--color-borde);
+    font-size: 0.85rem;
+    color: var(--color-texto-suave);
+    font-style: italic;
+}
+
+/* Sin actos */
+.actos-vacio {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+}
+
+.actos-vacio svg {
+    width: 40px; height: 40px;
+    margin-bottom: 0.75rem;
+    color: var(--color-borde);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Encuesta de asistencia */
+.acto-asistencia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.acto-asistencia__label {
+    font-size: 0.78rem;
+    color: var(--color-texto-suave);
+    margin-left: auto;
+}
+
+.acto-asistencia__btns {
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.btn-asistir,
+.btn-no-asistir {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1.5px solid;
+    background: transparent;
+    padding: 0;
+    transition: background 0.16s, color 0.16s;
+}
+
+.btn-asistir { color: #16a34a; border-color: #16a34a; }
+.btn-asistir:hover,
+.btn-asistir.activo { background: #16a34a; color: #fff; }
+
+.btn-no-asistir { color: #dc2626; border-color: #dc2626; }
+.btn-no-asistir:hover,
+.btn-no-asistir.activo { background: #dc2626; color: #fff; }
+
+/* Modal login asistencia */
+.modal-login-asi {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+}
+.modal-login-asi.show { display: flex; }
+
+.modal-login-asi__box {
+    background: var(--color-fondo-card);
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    max-width: 300px;
+    width: calc(100% - 2rem);
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,.18);
+}
+
+.modal-login-asi__box p {
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    margin: 0 0 1.1rem;
+    line-height: 1.5;
+}
+
+.modal-login-asi__box .btn-login-asi {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background: var(--color-primario);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.55rem;
+}
+
+.modal-login-asi__box .btn-cancel-asi {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    color: var(--color-texto-suave);
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}

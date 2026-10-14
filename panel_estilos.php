@@ -2,6 +2,15 @@
 declare(strict_types=1);
 require_once __DIR__ . '/includes/functions.php';
 
+if (!sesionActiva()) {
+    header('Location: /huella/login.php?back=' . urlencode($_SERVER['REQUEST_URI']));
+    exit;
+}
+if (!esAdminDeAlgunaHuella()) {
+    header('Location: /huella/');
+    exit;
+}
+
 // Cargar todos los clientes existentes para el selector
 $db       = getDB();
 $clientes = $db->query("SELECT Id_Cliente, Literal FROM h_clientesconfig ORDER BY Literal")->fetch_all(MYSQLI_ASSOC);
@@ -13,6 +22,7 @@ $tema     = cargarTema();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de estilos — Huella</title>
+    <?php require __DIR__ . '/includes/session_guard.php'; ?>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

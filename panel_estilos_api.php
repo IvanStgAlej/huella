@@ -6,6 +6,15 @@ require_once __DIR__ . '/includes/functions.php';
 function ok(string $msg = ''): never  { echo json_encode(['ok' => true,  'msg' => $msg]); exit; }
 function fail(string $msg): never     { echo json_encode(['ok' => false, 'msg' => $msg]); exit; }
 
+if (!sesionActiva()) {
+    http_response_code(401);
+    fail('No autenticado');
+}
+if (!esAdminDeAlgunaHuella()) {
+    http_response_code(403);
+    fail('Sin permisos');
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') fail('Método no permitido');
 
 $body = json_decode(file_get_contents('php://input'), true);

@@ -53,7 +53,6 @@ PHP 8 (strict types, prepared statements) · MySQL / MariaDB · vanilla JS · Ap
 ## Known limitations / roadmap
 
 - The `/huella/` base path is hard-coded in several places.
-- The style panel (`panel_estilos.php` and its API) does not require authentication yet.
 - No CSRF protection yet.
 - No demo seed data yet.
 

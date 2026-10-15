@@ -1,21 +1,22 @@
 # Huella
 
-Multi-tenant digital memorial platform for funeral homes, built with PHP 8, MySQL and vanilla JavaScript.
+A multi-tenant web platform for digital memorial pages, built with PHP 8, MySQL and vanilla JavaScript as a **portfolio project and technical demonstrator**.
 
-Each memorial ("huella") shows the obituary and biography of the deceased, the funeral services with RSVP, and a condolence wall where visitors can leave messages with photos, videos, audio or links. Funeral homes get their own visual theme, and a TV mode displays the wall on the screens of the funeral home.
+Each memorial ("huella") shows a biography, a list of events with RSVP, and a condolence wall where visitors can leave messages with photos, videos, audio or links. Every organisation using the platform gets its own visual theme and language, and a TV mode turns the wall into a slideshow for public screens.
 
-> **Status:** prototype developed in 2026 and presented to a company in the funeral sector. It runs locally on XAMPP and is not deployed.
+> [!NOTE]
+> **About this project.** Huella was developed as a learning exercise and a technical demonstration. All data, processes and entities included in this repository are fictitious and do not represent third-party systems or information. It is not a commercial product: it runs locally on XAMPP and is not deployed.
 
-![Memorial page, funeral services, condolence wall and the same product themed for a second funeral home in Catalan](docs/screenshots/banner.png)
+![Memorial page, events, condolence wall and the same platform themed for a second organisation in Catalan](docs/screenshots/banner.png)
 
 ## Features
 
-- **Multi-tenant:** client (funeral home) → company → branch, with a visual theme per client (CSS variables editable from a style panel).
+- **Multi-tenant:** tenant → company → branch hierarchy, with a visual theme per tenant (CSS variables editable from a style panel).
 - **4 languages:** Spanish, Catalan, English and Basque (`config/lang/*.json`).
-- **Funeral services** (wake, ceremony, cremation, burial…) with attendance confirmation.
+- **Events** (configurable event types, places and times) with attendance confirmation.
 - **Condolence wall** with images, videos, audio and links, likes, replies, moderation and a profanity filter.
 - **Roles:** owner, admin, collaborator, client, guest and applicant.
-- **TV mode** (`tv.php`): slideshow of wall messages for the funeral home screens.
+- **TV mode** (`tv.php`): slideshow of wall messages for public screens.
 - **AI features:**
   - A biography assistant with voice input (Whisper speech-to-text and Llama 3.3, both through Groq).
   - Thank-you messages generated from the wall's messages.
@@ -25,21 +26,29 @@ Each memorial ("huella") shows the obituary and biography of the deceased, the f
 
 All data shown is fictitious demo data (`database/seed.sql`).
 
-| Memorial | Funeral services | Condolence wall |
+| Memorial | Events | Condolence wall |
 |---|---|---|
-| ![Memorial page](docs/screenshots/memorial.png) | ![Funeral services with RSVP](docs/screenshots/events.png) | ![Condolence wall](docs/screenshots/wall.png) |
+| ![Memorial page](docs/screenshots/memorial.png) | ![Events with RSVP](docs/screenshots/events.png) | ![Condolence wall](docs/screenshots/wall.png) |
 
-| Second client: own theme, in Catalan | Admin area | AI biography assistant |
+| Second tenant: own theme, in Catalan | Admin area | AI biography assistant |
 |---|---|---|
 | ![Memorial in Catalan with a blue theme](docs/screenshots/memorial-catalan.png) | ![Admin area](docs/screenshots/admin.png) | ![AI biography assistant](docs/screenshots/ai-biography.png) |
 
-**TV mode** for the screens of the funeral home: a slideshow of the wall messages.
+**TV mode** for public screens: a slideshow of the wall messages.
 
 ![TV mode](docs/screenshots/tv-mode.gif)
 
-**Style panel**, where each funeral home gets its own colours, fonts and logo, with a live preview:
+**Style panel**, where each tenant gets its own colours, fonts and logo, with a live preview:
 
 ![Style panel](docs/screenshots/style-panel.png)
+
+## How it was built
+
+I designed the **data model** (multi-tenant hierarchy, roles and permissions, events, wall content and media), the **architecture** (a `public/` web root, JSON endpoints, shared includes and per-tenant theming through CSS variables) and the **functional flows** (memorial editing, RSVP, wall moderation, TV slideshow, AI-assisted biography).
+
+I used **generative AI as a development accelerator**, with a spec-driven workflow: each feature started as a written design spec and an implementation plan, which I then implemented and reviewed with an AI coding agent ([Claude Code](https://claude.com/claude-code)). You can see examples in [`docs/design/`](docs/design/). The AI did not replace the design work. It sped up the implementation, and I kept the responsibility for the decisions, the review and the testing.
+
+AI is also part of the product itself: the biography assistant turns short written or spoken answers into a draft biography (Whisper speech-to-text and Llama 3.3 through the Groq API).
 
 ## Tech stack
 
@@ -55,7 +64,7 @@ PHP 8 (strict types, prepared statements) · MySQL / MariaDB · vanilla JS · Ap
    mysql -u root huellas < database/reference_data.sql
    mysql -u root huellas < database/seed.sql      # optional: fictitious demo data
    ```
-   The demo creates two funeral homes and two memorials:
+   The demo creates two fictitious organisations and two memorials:
    - `http://localhost/huella/carmen-ruiz-navarro`, in Spanish with a warm theme.
    - `http://localhost/huella/josep-vidal-soler`, in Catalan with a blue theme.
 
@@ -76,12 +85,12 @@ huella/
 ├── public/                web root
 │   ├── .htaccess          clean URLs: /{slug}, /{slug}/actos, /{slug}/muro…
 │   ├── index.php          memorial home page
-│   ├── actos.php          funeral services and RSVP
+│   ├── actos.php          events and RSVP
 │   ├── muro.php           condolence wall
 │   ├── completar.php      memorial editor (admins)
 │   ├── bio_asistente.php  AI biography assistant
-│   ├── tv.php             TV mode for funeral home screens
-│   ├── panel_estilos.php  per-client theme editor
+│   ├── tv.php             TV mode for public screens
+│   ├── panel_estilos.php  per-tenant theme editor
 │   ├── admin_usuarios.php user and role management
 │   ├── login.php · logout.php · politicas.php · lanzador.php (dev launcher)
 │   ├── api/               JSON endpoints: auth, muro, asistencia, admin, panel_estilos, bio_asistente
@@ -101,4 +110,6 @@ huella/
 
 ## License
 
-[MIT](LICENSE) © 2026 Iván Santiago Alejano
+© 2026 Iván Santiago Alejano. Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+You may read, study, run and modify the code for **non-commercial purposes** (personal learning, research, education, evaluation). **Any commercial use is not permitted** without my prior written permission. For commercial licensing, contact me through my [GitHub profile](https://github.com/IvanStgAlej).

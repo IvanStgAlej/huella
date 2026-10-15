@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
-require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/upload.php';
+require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../includes/upload.php';
 
 function json_ok(array $data = []): never  { echo json_encode(['ok' => true,  ...$data]); exit; }
 function json_fail(string $msg): never     { echo json_encode(['ok' => false, 'msg' => $msg]); exit; }

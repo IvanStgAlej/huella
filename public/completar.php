@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/upload.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../includes/upload.php';
 
 $tema    = cargarTema();
 $huellas = listarHuellas();
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $huella && isset($_POST['accion_msg
         if ($st->execute()) $toastMsg = $lang['toast_comunicado_eliminado'] ?? '';
         $st->close();
     } elseif ($_POST['accion_msg'] === 'generar_agradecimiento') {
-        require_once __DIR__ . '/includes/groq.php';
+        require_once __DIR__ . '/../includes/groq.php';
 
         // Recoger todos los mensajes del muro (no eliminados ni vetados)
         $st = $db->prepare("
@@ -347,7 +347,7 @@ $nombreFallecido = trim(
     <title><?= $lang['completar_titulo_pag'] ?> — <?= htmlspecialchars($nombreFallecido ?: $nombreProducto) ?></title>
     <link rel="stylesheet" href="<?= asset('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?= asset('assets/css/completar.css') ?>">
-    <?php require __DIR__ . '/includes/session_guard.php'; ?>
+    <?php require __DIR__ . '/../includes/session_guard.php'; ?>
     <style>:root { <?= $cssVars ?> }
     /* ── Hero de cabecera (estilo lanzador) ── */
     .completar-hero {
@@ -1318,7 +1318,7 @@ function toggleUsuarios() {
     }
 
     function apiU(data, cb) {
-        fetch('/huella/admin_api.php', {
+        fetch('/huella/api/admin.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: Object.entries(data).map(function(p){ return encodeURIComponent(p[0])+'='+encodeURIComponent(p[1]); }).join('&')

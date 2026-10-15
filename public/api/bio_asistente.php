@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/gemini.php';
-require_once __DIR__ . '/includes/groq.php';
+require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../includes/gemini.php';
+require_once __DIR__ . '/../../includes/groq.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

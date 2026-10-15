@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 if (sesionActiva()) {
     $back = filter_var($_GET['back'] ?? '', FILTER_SANITIZE_URL);
@@ -254,7 +254,7 @@ function ocultarError(el)      { el.style.display = 'none'; }
 function setLoading(btn, on)   { btn.disabled = on; btn.textContent = on ? 'Cargando…' : btn.dataset.label; }
 
 function post(body) {
-    return fetch('/huella/auth_api.php', {
+    return fetch('/huella/api/auth.php', {
         method:  'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body:    body

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 $tema    = cargarTema();
 $huellas = listarHuellas();
@@ -60,7 +60,7 @@ function fechaPostCorta(?string $fecha): string {
 }
 
 // URL de la API (mismo directorio)
-$apiUrl = asset('muro_api.php');
+$apiUrl = asset('api/muro.php');
 ?>
 <!DOCTYPE html>
 <html lang="<?= strtolower($idIdioma) ?>">
@@ -70,7 +70,7 @@ $apiUrl = asset('muro_api.php');
     <title><?= $lang['muro'] ?> — <?= htmlspecialchars($nombreFallecido ?: $nombreProducto) ?></title>
     <link rel="stylesheet" href="<?= asset('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?= asset('assets/css/muro.css') ?>">
-    <?php require __DIR__ . '/includes/session_guard.php'; ?>
+    <?php require __DIR__ . '/../includes/session_guard.php'; ?>
     <style>:root { <?= $cssVars ?> }
     .compositor__nombre--sesion {
         font-size: .9rem;

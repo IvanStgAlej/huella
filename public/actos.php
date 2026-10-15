@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 $tema    = cargarTema();
 $huellas = listarHuellas();
@@ -49,7 +49,7 @@ if ($huella) {
     <title><?= $lang['actividades'] ?> — <?= htmlspecialchars($nombreFallecido ?: $nombreProducto) ?></title>
     <link rel="stylesheet" href="<?= asset('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?= asset('assets/css/actos.css') ?>">
-    <?php require __DIR__ . '/includes/session_guard.php'; ?>
+    <?php require __DIR__ . '/../includes/session_guard.php'; ?>
     <style>:root { <?= $cssVars ?> }</style>
 </head>
 <body>
@@ -288,7 +288,7 @@ function votarAsistencia(btn, asiste) {
     var idHuella = wrap.dataset.huella;
     var idTarea  = wrap.dataset.tarea;
 
-    fetch('/huella/asistencia_api.php', {
+    fetch('/huella/api/asistencia.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'action=votar'

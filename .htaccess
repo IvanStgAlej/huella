@@ -1,23 +1,7 @@
+# Solo public/ es accesible desde la web: todas las peticiones se reenvían ahí.
+# includes/, config/, database/ y docs/ quedan fuera del alcance del navegador.
 Options -Indexes
 RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# /huella/{slug}/actos
-RewriteRule ^([a-zA-Z0-9_-]+)/actos/?$           actos.php?link=$1           [QSA,L]
-
-# /huella/{slug}/muro
-RewriteRule ^([a-zA-Z0-9_-]+)/muro/?$            muro.php?link=$1            [QSA,L]
-
-# /huella/{slug}/completar
-RewriteRule ^([a-zA-Z0-9_-]+)/completar/?$       completar.php?link=$1       [QSA,L]
-
-# /huella/{slug}/bio-asistente
-RewriteRule ^([a-zA-Z0-9_-]+)/bio-asistente/?$   bio_asistente.php?link=$1   [QSA,L]
-
-# /huella/politicas-de-privacidad
-RewriteRule ^politicas-de-privacidad/?$           politicas.php               [QSA,L]
-
-# /huella/{slug}  (página de inicio del fallecido)
-RewriteRule ^([a-zA-Z0-9_-]+)/?$                 index.php?link=$1           [QSA,L]
+RewriteRule ^$ public/ [L]
+RewriteRule ^((?!public/).*)$ public/$1 [L]

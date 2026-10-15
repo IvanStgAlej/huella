@@ -68,7 +68,7 @@ function renderMenuUsuario(array $u, string $requestUri): string {
         btn.addEventListener('click',function(e){
             e.stopPropagation();
             var cod=this.dataset.cod;
-            fetch('/huella/auth_api.php',{
+            fetch('/huella/api/auth.php',{
                 method:'POST',
                 headers:{'Content-Type':'application/x-www-form-urlencoded'},
                 body:'action=idioma&idioma='+encodeURIComponent(cod)

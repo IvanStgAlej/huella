@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 if (!sesionActiva()) {
     header('Location: /huella/login.php?back=' . urlencode($_SERVER['REQUEST_URI']));
@@ -22,7 +22,7 @@ $tema     = cargarTema();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de estilos — Huella</title>
-    <?php require __DIR__ . '/includes/session_guard.php'; ?>
+    <?php require __DIR__ . '/../includes/session_guard.php'; ?>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -782,7 +782,7 @@ async function guardar() {
     btn.textContent = 'Guardando…';
 
     try {
-        const res  = await fetch('/huella/panel_estilos_api.php', {
+        const res  = await fetch('/huella/api/panel_estilos.php', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(payload),

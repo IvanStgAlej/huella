@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 if (!sesionActiva()) {
     header('Location: /huella/login.php?back=' . urlencode($_SERVER['REQUEST_URI']));
@@ -81,7 +81,7 @@ $rolesLabel = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de usuarios — <?= htmlspecialchars($nombreProducto) ?></title>
     <link rel="stylesheet" href="<?= asset('assets/css/main.css') ?>">
-    <?php require __DIR__ . '/includes/session_guard.php'; ?>
+    <?php require __DIR__ . '/../includes/session_guard.php'; ?>
     <style>:root { <?= $cssVars ?> }</style>
     <style>
     .admin-section-header {
@@ -300,7 +300,7 @@ $rolesLabel = [
     }
 
     function api(data, cb) {
-        fetch('/huella/admin_api.php', {
+        fetch('/huella/api/admin.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: Object.entries(data).map(function(p){ return encodeURIComponent(p[0])+'='+encodeURIComponent(p[1]); }).join('&')

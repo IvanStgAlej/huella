@@ -40,14 +40,29 @@ PHP 8 (strict types, prepared statements) · MySQL / MariaDB · vanilla JS · Ap
 
 ## Project structure
 
+Only `public/` is reachable from the browser: the root `.htaccess` forwards every request there, so application code, configuration and SQL files can never be downloaded or executed directly.
+
 ```
-├── *.php              pages (index, actos, muro, completar, tv…) and JSON APIs (*_api.php)
-├── includes/          shared functions, session guard, uploads, AI clients (groq, gemini, ia)
-├── config/            DB connection, languages, theme, word filters, AI config (blocked from the web)
-├── assets/            CSS and images
-├── database/          schema.sql and reference_data.sql
-├── docs/              design specs and implementation plans
-└── uploads/           user content (git-ignored)
+huella/
+├── .htaccess              forwards all requests to public/
+├── public/                web root
+│   ├── .htaccess          clean URLs: /{slug}, /{slug}/actos, /{slug}/muro…
+│   ├── index.php          memorial home page
+│   ├── actos.php          funeral services and RSVP
+│   ├── muro.php           condolence wall
+│   ├── completar.php      memorial editor (admins)
+│   ├── bio_asistente.php  AI biography assistant
+│   ├── tv.php             TV mode for funeral home screens
+│   ├── panel_estilos.php  per-client theme editor
+│   ├── admin_usuarios.php user and role management
+│   ├── login.php · logout.php · politicas.php · lanzador.php (dev launcher)
+│   ├── api/               JSON endpoints: auth, muro, asistencia, admin, panel_estilos, bio_asistente
+│   ├── assets/            CSS and images
+│   └── uploads/           user content (git-ignored; script execution disabled)
+├── includes/              shared functions, session guard, uploads, AI clients (groq, gemini, ia)
+├── config/                DB connection, languages, theme, word filters, AI config
+├── database/              schema.sql and reference_data.sql
+└── docs/design/           design specs and implementation plans
 ```
 
 ## Known limitations / roadmap
@@ -55,6 +70,7 @@ PHP 8 (strict types, prepared statements) · MySQL / MariaDB · vanilla JS · Ap
 - The `/huella/` base path is hard-coded in several places.
 - No CSRF protection yet.
 - No demo seed data yet.
+- `lanzador.php` is a development launcher that lists every memorial; remove or protect it before deploying.
 
 ## License
 

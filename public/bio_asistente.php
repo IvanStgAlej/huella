@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 // ── Resolución de huella y control de acceso ──────────────────────────────
 $linkActual = $_GET['link'] ?? null;
@@ -309,7 +309,7 @@ async function iniciarGeneracion() {
   });
 
   try {
-    const resp = await fetch('/huella/bio_asistente_api.php', {
+    const resp = await fetch('/huella/api/bio_asistente.php', {
       method:  'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body:    params.toString(),
@@ -353,7 +353,7 @@ async function usarBiografia() {
   });
 
   try {
-    const resp = await fetch('/huella/bio_asistente_api.php', {
+    const resp = await fetch('/huella/api/bio_asistente.php', {
       method:  'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body:    params.toString(),
@@ -518,7 +518,7 @@ async function procesarGrabacion() {
   fd.append('audio',     blob, 'audio.' + ext);
 
   try {
-    const resp = await fetch('/huella/bio_asistente_api.php', { method: 'POST', body: fd });
+    const resp = await fetch('/huella/api/bio_asistente.php', { method: 'POST', body: fd });
     const data = await resp.json();
 
     if (data.ok && data.texto) {

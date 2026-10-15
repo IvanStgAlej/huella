@@ -38,7 +38,7 @@ function subirMediaPost(array $file, string $idHuella, string $idPost, string $t
     $dia    = $hoy->format('d');
 
     $carpetaRelativa = "uploads/posts/{$idHuella}/{$idPost}/{$tipo}/{$anio}/{$mes}/{$dia}/";
-    $carpetaAbsoluta = __DIR__ . '/../' . $carpetaRelativa;
+    $carpetaAbsoluta = __DIR__ . '/../public/' . $carpetaRelativa;
 
     if (!is_dir($carpetaAbsoluta) && !mkdir($carpetaAbsoluta, 0755, true)) {
         throw new RuntimeException("No se pudo crear la carpeta de destino");

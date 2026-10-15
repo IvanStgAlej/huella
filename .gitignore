@@ -1,13 +1,18 @@
-# Uploads (user content)
-uploads/
+# Uploads (user content): keep only the folder skeleton and its security .htaccess
+public/uploads/*
+!public/uploads/.htaccess
+!public/uploads/posts/
+public/uploads/posts/*
+!public/uploads/posts/.gitkeep
 
 # Sensitive config — add real keys locally, never commit
 # config/gemini.php and config/ia.php are committed with an EMPTY key: never put a real one there,
 # use the GEMINI_API_KEY / ANTHROPIC_API_KEY environment variables instead.
 config/groq.php
 
-# Local debug scripts (print part of the API keys)
-_test_ia.php
+# Local debug/test scripts (print part of the API keys or open test sessions)
+_test_*.php
+public/_test_*.php
 
 # Dev/tool directories
 .superpowers/

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 $tema    = cargarTema();
 $huellas = listarHuellas();
 $db      = getDB();
 
 // ── Filtro de palabras prohibidas ─────────────────────────────────────────
-$_palabrasProhibidas = require __DIR__ . '/config/palabras_prohibidas.php';
+$_palabrasProhibidas = require __DIR__ . '/../config/palabras_prohibidas.php';
 
 function normalizar(string $s): string {
     $s = mb_strtolower($s, 'UTF-8');

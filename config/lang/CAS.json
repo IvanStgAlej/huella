@@ -130,5 +130,12 @@
   "confirma_asistencia":         "Confirma tu asistencia:",
   "asistire":                    "Asistiré",
   "no_asistire":                 "No asistiré",
-  "asistencia_login":            "Inicia sesión para confirmar tu asistencia"
+  "asistencia_login":            "Inicia sesión para confirmar tu asistencia",
+  "fecha_meses":        ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  "fecha_meses_cortos": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+  "fecha_dias_semana":  ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+  "fecha_larga":        "{d} de {mes} de {Y}",
+  "fecha_corta":        "{d} {mes_c} {Y}",
+  "fecha_hora":         "{dia}, {d} {mes_c}, {hora}",
+  "edad_anios":         "{n} años"
 }

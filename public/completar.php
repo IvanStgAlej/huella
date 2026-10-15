@@ -740,9 +740,7 @@ $nombreFallecido = trim(
                             $tsFin = strtotime($acto['Act_FechaHora_Fin']);
                             $tsIni = strtotime($acto['Act_FechaHora_Inicio']);
                             if (date('Y-m-d', $tsFin) !== date('Y-m-d', $tsIni)) {
-                                $meses = ['CAS'=>['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],'ENG'=>['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']];
-                                $ms = $meses[$idIdioma] ?? $meses['CAS'];
-                                echo ' - ' . date('H:i', $tsFin) . ', ' . date('j', $tsFin) . ' ' . $ms[(int)date('n', $tsFin) - 1];
+                                echo ' - ' . aplicarPatronFecha('{hora}, {d} {mes_c}', $tsFin, $idIdioma);
                             } else {
                                 echo ' - ' . date('H:i', $tsFin);
                             }

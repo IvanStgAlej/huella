@@ -129,5 +129,12 @@
   "confirma_asistencia":         "Berretsi zure asistentzia:",
   "asistire":                    "Joango naiz",
   "no_asistire":                 "Ez naiz joango",
-  "asistencia_login":            "Saioa hasi zure asistentzia baieztatzeko"
+  "asistencia_login":            "Saioa hasi zure asistentzia baieztatzeko",
+  "fecha_meses":        ["urtarrilak", "otsailak", "martxoak", "apirilak", "maiatzak", "ekainak", "uztailak", "abuztuak", "irailak", "urriak", "azaroak", "abenduak"],
+  "fecha_meses_cortos": ["urt", "ots", "mar", "api", "mai", "eka", "uzt", "abu", "ira", "urr", "aza", "abe"],
+  "fecha_dias_semana":  ["igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"],
+  "fecha_larga":        "{Y}, {mes} {d}",
+  "fecha_corta":        "{Y}, {mes_c} {d}",
+  "fecha_hora":         "{dia}, {mes_c} {d}, {hora}",
+  "edad_anios":         "{n} urte"
 }

@@ -238,16 +238,44 @@ function obtenerTemaCliente(string $idCliente, array $tema): array {
     return $tema;
 }
 
+/**
+ * Textos de fecha (meses, días, patrones) del idioma dado, con CAS como respaldo
+ * para las claves que falten.
+ */
+function textosFecha(string $idioma): array {
+    static $cache = [];
+    if (!isset($cache[$idioma])) {
+        $claves = ['fecha_meses', 'fecha_meses_cortos', 'fecha_dias_semana', 'fecha_larga', 'fecha_corta', 'fecha_hora', 'edad_anios'];
+        $base   = array_intersect_key(cargarIdioma('CAS'), array_flip($claves));
+        $cache[$idioma] = array_merge($base, array_intersect_key(cargarIdioma($idioma), $base));
+    }
+    return $cache[$idioma];
+}
+
+function aplicarPatronFecha(string $patron, int $ts, string $idioma): string {
+    $t = textosFecha($idioma);
+    return strtr($patron, [
+        '{dia}'   => $t['fecha_dias_semana'][(int)date('w', $ts)],
+        '{d}'     => date('j', $ts),
+        '{mes}'   => $t['fecha_meses'][(int)date('n', $ts) - 1],
+        '{mes_c}' => $t['fecha_meses_cortos'][(int)date('n', $ts) - 1],
+        '{Y}'     => date('Y', $ts),
+        '{hora}'  => date('H:i', $ts),
+    ]);
+}
+
 function formatearFecha(?string $fecha, string $idioma = 'CAS'): string {
     if (!$fecha || $fecha === '0000-00-00 00:00:00') return '—';
-    $ts = strtotime($fecha);
-    $locales = ['CAS' => 'es_ES', 'CAT' => 'ca_ES', 'ENG' => 'en_GB', 'EUS' => 'eu_ES'];
-    $meses = [
-        'CAS' => ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
-        'ENG' => ['January','February','March','April','May','June','July','August','September','October','November','December'],
-    ];
-    $m = $meses[$idioma] ?? $meses['CAS'];
-    return date('j', $ts) . ' de ' . $m[(int)date('n', $ts) - 1] . ' de ' . date('Y', $ts);
+    return aplicarPatronFecha(textosFecha($idioma)['fecha_larga'], strtotime($fecha), $idioma);
+}
+
+function formatearFechaCorta(?string $fecha, string $idioma = 'CAS'): string {
+    if (!$fecha) return '';
+    return aplicarPatronFecha(textosFecha($idioma)['fecha_corta'], strtotime($fecha), $idioma);
+}
+
+function formatearEdad(int $anios, string $idioma = 'CAS'): string {
+    return str_replace('{n}', (string)$anios, textosFecha($idioma)['edad_anios']);
 }
 
 function obtenerActos(string $idHuella, string $idCliente, string $empresa): array {
@@ -328,22 +356,8 @@ function obtenerAsistencia(string $idHuella, ?int $idUser): array {
 
 function formatearFechaHora(?string $fecha, string $idioma = 'CAS'): string {
     if (!$fecha || $fecha === '0000-00-00 00:00:00') return '—';
-    $ts = strtotime($fecha);
-    $diasSemana = [
-        'CAS' => ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
-        'ENG' => ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-    ];
-    $meses = [
-        'CAS' => ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],
-        'ENG' => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-    ];
-    $ds = $diasSemana[$idioma] ?? $diasSemana['CAS'];
-    $ms = $meses[$idioma] ?? $meses['CAS'];
-    $diaSemana = $ds[(int)date('w', $ts)];
-    $dia       = date('j', $ts);
-    $mes       = $ms[(int)date('n', $ts) - 1];
-    $hora      = date('H:i', $ts);
-    return ucfirst($diaSemana) . ', ' . $dia . ' ' . $mes . ', ' . $hora;
+    $texto = aplicarPatronFecha(textosFecha($idioma)['fecha_hora'], strtotime($fecha), $idioma);
+    return mb_strtoupper(mb_substr($texto, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texto, 1, null, 'UTF-8');
 }
 
 function generarIdPost(string $idHuella): string {

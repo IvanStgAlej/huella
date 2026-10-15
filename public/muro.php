@@ -52,13 +52,6 @@ function inicialPost(?string $autor): string {
     return mb_strtoupper(mb_substr(trim($texto), 0, 1, 'UTF-8'), 'UTF-8');
 }
 
-function fechaPostCorta(?string $fecha): string {
-    if (!$fecha) return '';
-    $meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-    $ts    = strtotime($fecha);
-    return date('j', $ts) . ' ' . $meses[(int)date('n', $ts) - 1] . '. ' . date('Y', $ts);
-}
-
 // URL de la API (mismo directorio)
 $apiUrl = asset('api/muro.php');
 ?>
@@ -276,7 +269,7 @@ function renderizarPost(array $post, bool $esRespuesta, array $lang, bool $logue
     $likes    = (int)($post['total_likes'] ?? 0);
     $replies  = (int)($post['total_respuestas'] ?? 0);
     $texto    = htmlspecialchars(filtrarMalsonantes($post['Post_Texto'] ?? ''));
-    $fecha    = fechaPostCorta($post['Post_Fecha'] ?? null);
+    $fecha    = formatearFechaCorta($post['Post_Fecha'] ?? null, $GLOBALS['idIdioma'] ?? 'CAS');
     $esPropio = $idUsuarioActual !== '' && ($post['Post_Id_user'] ?? '') === $idUsuarioActual;
     $puedeModerar = $esPropio || $esAdmin;
     $svgHeart = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';

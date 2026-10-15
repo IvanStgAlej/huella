@@ -97,7 +97,6 @@ huella/
 
 - The `/huella/` base path is hard-coded in several places.
 - No CSRF protection yet.
-- Dates and ages are always formatted in Spanish, even on memorials in other languages.
 - `lanzador.php` is a development launcher that lists every memorial; remove or protect it before deploying.
 
 ## License

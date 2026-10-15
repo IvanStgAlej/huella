@@ -129,5 +129,12 @@
   "confirma_asistencia":         "Confirm your attendance:",
   "asistire":                    "I'll attend",
   "no_asistire":                 "I won't attend",
-  "asistencia_login":            "Log in to confirm your attendance"
+  "asistencia_login":            "Log in to confirm your attendance",
+  "fecha_meses":        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "fecha_meses_cortos": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "fecha_dias_semana":  ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  "fecha_larga":        "{d} {mes} {Y}",
+  "fecha_corta":        "{d} {mes_c} {Y}",
+  "fecha_hora":         "{dia}, {d} {mes_c}, {hora}",
+  "edad_anios":         "{n} years"
 }

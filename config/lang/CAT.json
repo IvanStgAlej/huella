@@ -130,5 +130,12 @@
   "confirma_asistencia":         "Confirma la teva assistència:",
   "asistire":                    "Assistiré",
   "no_asistire":                 "No assistiré",
-  "asistencia_login":            "Inicia sessió per confirmar la teva assistència"
+  "asistencia_login":            "Inicia sessió per confirmar la teva assistència",
+  "fecha_meses":        ["de gener", "de febrer", "de març", "d'abril", "de maig", "de juny", "de juliol", "d'agost", "de setembre", "d'octubre", "de novembre", "de desembre"],
+  "fecha_meses_cortos": ["gen", "febr", "març", "abr", "maig", "juny", "jul", "ag", "set", "oct", "nov", "des"],
+  "fecha_dias_semana":  ["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"],
+  "fecha_larga":        "{d} {mes} de {Y}",
+  "fecha_corta":        "{d} {mes_c} {Y}",
+  "fecha_hora":         "{dia}, {d} {mes_c}, {hora}",
+  "edad_anios":         "{n} anys"
 }

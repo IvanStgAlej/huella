@@ -1,5 +1,7 @@
 # Huella
 
+🇪🇸 [Versión en español](README.es.md)
+
 A multi-tenant web platform for digital memorial pages, built with PHP 8, MySQL and vanilla JavaScript as a **portfolio project and technical demonstrator**.
 
 Each memorial ("huella") shows a biography, a list of events with RSVP, and a condolence wall where visitors can leave messages with photos, videos, audio or links. Every organisation using the platform gets its own visual theme and language, and a TV mode turns the wall into a slideshow for public screens.

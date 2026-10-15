@@ -1,6 +1,7 @@
 # Uploads (user content): keep only the folder skeleton and its security .htaccess
 public/uploads/*
 !public/uploads/.htaccess
+!public/uploads/demo/
 !public/uploads/posts/
 public/uploads/posts/*
 !public/uploads/posts/.gitkeep
